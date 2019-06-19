@@ -4,6 +4,7 @@ package com.iamport;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -33,7 +34,16 @@ public class IamportViewManager extends SimpleViewManager<IamportWebView> implem
   @Override
   public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
     /* 실시간 계좌이체 인증 후 후속처리 루틴 */
-    webViewClient.bankPayPostProcess(requestCode, resultCode, data);
+    Log.e("onActivityResult " ,  "activity " + activity );
+    Log.e("onActivityResult " ,  "requestCode " + requestCode );
+    Log.e("onActivityResult " ,  "resultCode " + resultCode );
+    Log.e("onActivityResult " ,  "data " + data );
+
+    try{
+      webViewClient.bankPayPostProcess(requestCode, resultCode, data);
+    }catch (Exception e){
+      e.printStackTrace();
+    }
   }
 
   @Override
