@@ -42,7 +42,10 @@ public class NiceWebViewClient extends IamportWebViewClient {
                 .getJSModule(RCTDeviceEventEmitter.class)
                 .emit("message", url);
 
-            return false;
+            // https://service.iamport.kr/payments/success?success=true&imp_uid=imp_050501185252
+            // 결제 완료 시점에서 iamport 페이지를 안 볼 수 있도록 하기 위해서 
+            // return fasle;
+            return true;
         }
         if (isUrlStartsWithProtocol(url)) return false;
 
